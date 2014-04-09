@@ -1,4 +1,4 @@
 gitblog
 =======
 
-Blog with git-page.
+Blog with html/css/js training.

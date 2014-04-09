@@ -8,10 +8,12 @@
 	<body>
 		<section class="page">
 			<header>
-				<h2>{{ page.title }}</h2>
-				<span>{{ page.date }}</span>
+				<div class="article-title">
+					<h2>{{ page.title }}</h2>
+					<span class="date">{{ page.date }}</span>
+				</div>
 			</header>
-			<hr/>
+			<hr class="clear-both"/>
 			<main>
 				<article>
 				{{ content }}
