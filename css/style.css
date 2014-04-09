@@ -1,0 +1,14 @@
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 25.5px;
+	background-color: rgb(240, 240, 240);
+}
+
+.page {
+	width: 1000px;
+	margin: 20px auto;
+}
+
+main {
+	width: 90%;
+}
