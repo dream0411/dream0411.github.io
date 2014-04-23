@@ -1,7 +1,7 @@
 body {
 	margin: 0px;
 	font-family: "Helvetica Neue";
-	font-size: 14px;
+	font-size: 20px;
 	color: #666;
 	line-height: 1.1;
 	background-color: rgb(245, 245, 245);
@@ -23,7 +23,7 @@ header:hover {
 }
 main {
 	position: absolute;
-	left: 300px;
+	left: 400px;
 	right: 0;
 	min-height: 100%;
 }
