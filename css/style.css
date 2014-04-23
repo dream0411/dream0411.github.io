@@ -49,7 +49,7 @@ footer {
 	line-height: 1.4;
 }
 article {
-	margin: 20px 40px;
+	padding: 20px 40px;
 }
 .article-title {
 	text-align: center;
