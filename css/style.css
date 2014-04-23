@@ -2,59 +2,30 @@ body {
 	margin: 0px;
 	font-family: "Helvetica Neue";
 	font-size: 20px;
-	color: #666;
+	color: rgb(5, 5, 5);
 	line-height: 1.1;
 	background-color: rgb(245, 245, 245);
 }
-hr {
-	clear: both;
+.head {
+	font-size: 40px;
+	line-height: 2;
+	text-align: center;
+	border-bottom: 2px solid rgb(198, 198, 198);
 }
-header {
-	position: fixed;
-	left: 0;
-	width: 300px;
-	height: 100%;
-	padding: 10px 0;
-	color: #BFBFBF;
-	background-color:#5F5F6F;
+.head a {
+	text-align: center;
 }
-header:hover {
-	color: rgb(245, 245, 245);
+a, a:hover, a:visited {
+	text-decoration: none;
+	color: rgb(15, 15, 15);
 }
 main {
-	position: absolute;
-	left: 300px;
-	right: 0;
-	min-height: 100%;
-}
-footer {
-	clear: both;
-	padding: 0 15%;
-	position: absolute;
-	bottom: 0;
-	height: 100px;
-}
-.icon {
-	width: 30%;
-	height: 130px;
-	float: left;
-	border: 1px #DDDDDD solid;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
-	margin: 20px;
-	text-align: center;
-	line-height: 40px;
-}
-.nav li {
-	list-style: none;
-	line-height: 1.4;
+	width: 90%;
+	max-width: 800px;
+	margin: 50px auto;
+	padding: 40px 40px;
 }
 article {
-	width: 80%;
-	margin: 20px auto;
-}
-.article-title {
-	text-align: center;
-}
-a {
-	text-decoration: none;
+	margin: 40px auto;
+	width: 90%;
 }
