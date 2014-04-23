@@ -55,3 +55,6 @@ article {
 .article-title {
 	text-align: center;
 }
+a {
+	text-decoration: none;
+}
