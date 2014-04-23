@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Blog here
+title: Debug Me
 ---
 
 {% for post in site.posts %}
