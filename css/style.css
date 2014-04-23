@@ -51,3 +51,6 @@ footer {
 article {
 	margin: 20px 40px;
 }
+.article-title {
+	text-align: center;
+}
