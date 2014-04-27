@@ -17,6 +17,7 @@ body {
 }
 a, a:hover, a:visited {
 	text-decoration: none;
+	border-bottom: 1px dashed silver;
 	color: rgb(15, 15, 15);
 }
 main {
