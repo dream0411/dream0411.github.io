@@ -27,17 +27,19 @@ title: Git概览 (TODO)
 
 然后本地打开命令行，找到创建一个新的目录，输入下列命令：
 
-    mkdir hobby
-    cd hobby
-    git init
-    git remote add origin https://github.com/dream0411/hobby.git
-    echo like > riding-bike
-    echo like > movies
-    echo love > coding
-    echo "Sample pro for learing git" > README.md
-    git add riding-bike moview coding README.md
-    git commit -m "Initial commit"
-    git push -u origin master
+```
+mkdir hobby
+cd hobby
+git init
+git remote add origin https://github.com/dream0411/hobby.git
+echo like > riding-bike
+echo like > movies
+echo love > coding
+echo "Sample pro for learing git" > README.md
+git add riding-bike moview coding README.md
+git commit -m "Initial commit"
+git push -u origin master
+```
 
 
 ### 删除仓库

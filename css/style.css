@@ -14,6 +14,7 @@ body {
 }
 .head a {
 	text-align: center;
+	border-bottom: none;
 }
 a, a:hover, a:visited {
 	text-decoration: none;
@@ -28,4 +29,15 @@ main {
 article {
 	margin: 40px auto;
 	width: 90%;
+}
+
+pre {
+	padding: 0px 24px;
+	border-left: 6px #ccc solid;
+	white-space: pre-wrap;
+}
+code {
+	font-family: Consolas, Monaco, Andale Mono, monospace;
+	line-height: 1.5;
+	font-size: 15px;
 }
