@@ -55,6 +55,7 @@ TODO
 
 ### 添加文件、文件夹
 在hobby目录下新增singing文件、language/cpp、language/go后，将这三个文件都添加到代码库中：
+
 ```
 git add singing language
 git commit -m "Add singing and language forder"
@@ -63,6 +64,7 @@ git push
 
 ### 删除文件、文件夹
 删除已在仓库中的singing文件
+
 ```
 git rm singing
 git commit -m "forget it"
@@ -71,6 +73,7 @@ git push
 
 ### 修改文件内容
 修改已跟踪的文件ff.c后
+
 ```
 git add ff.c
 git commit -m "add ff.c"
