@@ -51,7 +51,7 @@ Git通常将检出叫做clone；
 然后/home/me/gitreps/hobby目录下就会包含代码库的所有内容了
 
 ### 删除仓库
-TODO
+需要登录到Github网站上自己的管理页面中删除代码库，本地的目录自己删除就可以了。
 
 ### 添加文件、文件夹
 在hobby目录下新增singing文件、language/cpp、language/go后，将这三个文件都添加到代码库中：
@@ -94,12 +94,41 @@ git reset --hard
 然后做git status，会发现这次提交的记录和log都没了。
 
 2. 恢复到任意版本
-TODO
+找到以前的某个版本(commit的id)后，比如c78e2ee3c43245c252fe379652f7ba8545b417e4，我们想更新到这个commit，但是注意，执行操作前，这个目录不能有未提交的修改，如果有未提交的内容，但是又不想现在就提交，可执行下列命令：
+
+```
+// 先记下当前的commit id比如d723a99d32f5022fb8b510a31a2ebada9312a44d
+git log -1
+
+// 如果我们有未提交的修改，用这个把这些修改暂存起来，用于稍后恢复
+git stash
+
+// 将整个代码库恢复到c78e2e
+git checkout c78e2e
+
+// 自己想做的一系列操作
+...
+
+// 收尾工作，恢复到我们原来的commit id
+git checkout d723a
+
+// 恢复我们之前暂存的那些未提交代码
+git stash pop
+```
 
 3. 仅恢复某个文件
+两种方式：
+
+将文件README恢复到历史版本:
+
+	git checkout c78e2e -- README
+
+将文件README历史版本显示出来，可以用文件重定向操作符写至另一个文件：
+
+	git show c78e2e:README > README-old
 
 ### 在历史版本或记录搜索关键字或代码
-TODO
+TODO (只找到搜索历史log的方法，未找到搜索代码内容的命令)
 
 ### 多人合作编辑，并能处理冲突
 需要主要分两种情况：
@@ -108,7 +137,7 @@ TODO
 
 	git pull
 
-2. 自己从版本x修改，远程也有人从x版本修改过，并且已经提交了，我们想远程的和自己的合并
+2. 自己从版本x修改，远程也有人从x版本修改过，并且已经提交至版本x+1，我们想获取远程的代码，并将自己的代码合并至x+1，再提交至x+2
 
 ```
 git stash	// 把本地的修改先暂存起来
@@ -120,4 +149,6 @@ git add somefile.c // 后面就是把冲突文件按照正常流程add, commit, 
 git commit -m "update and rebase"
 git push
 ```
+
+这样提交后，会看到这三个提交是在一条线上的。
 
