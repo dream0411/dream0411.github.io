@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 真空管，晶体管，集成电路(TODO)
+title: 真空管，晶体管，集成电路
 ---
 
 {{ page.title }}
