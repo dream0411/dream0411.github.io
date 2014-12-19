@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Git常用命令 (TODO)
+title: Git常用命令
 ---
 
 {{ page.title }}
@@ -128,7 +128,10 @@ git stash pop
 	git show c78e2e:README > README-old
 
 ### 在历史版本或记录搜索关键字或代码
-TODO (只找到搜索历史log的方法，未找到搜索代码内容的命令)
+
+	git grep "SomeCode" $(git rev-list --all)
+	
+可以用正则、and、or等多种方式匹配，git help grep有多种选项说明。
 
 ### 多人合作编辑，并能处理冲突
 需要主要分两种情况：
