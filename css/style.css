@@ -1,7 +1,7 @@
 body {
 	margin: 0px;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 18px;
+	font-size: 17px;
 	color: rgb(5, 5, 5);
 	line-height: 1.5;
 	background-color: rgb(245, 245, 245);
@@ -23,7 +23,7 @@ a, a:hover, a:visited {
 }
 main {
 	width: 90%;
-	max-width: 800px;
+	max-width: 900px;
 	margin: 50px auto;
 }
 article {
@@ -37,7 +37,7 @@ pre {
 	white-space: pre-wrap;
 }
 code {
-	font-family: Consolas, Monaco, Andale Mono, monospace;
+	font-family: Monospace, Consolas, Monaco, Andale Mono;
 	line-height: 1.5;
 	font-size: 15px;
 }
