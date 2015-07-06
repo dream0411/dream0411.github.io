@@ -84,6 +84,7 @@ git push
 	git log
 
 ### 检出历史版本
+
 1. 恢复到倒数第二次提交的版本
 有时候刚提交完，发现问题，需要撤销回去，执行以下命令会撤销刚刚提交的全部内容:
 
@@ -155,3 +156,12 @@ git push
 
 这样提交后，会看到这三个提交是在一条线上的。
 
+### 比较差异
+
+1. *git diff* 用于比较当前未git add的修改与父提交之间的差异
+2. *git diff --cached* 用于比较已git add的，下次git commit时的修改内容
+3. *git diff HEAD* 比较的是当前所有已修改但为git add的内容，这些内容在git commit -a时会被提交
+4. *git diff master..test* 比较两个分支
+5. *git diff master...test* 比较master和test的共同父分支与test分支的差异
+6. *git diff test* 比较当前分支和另一分支的差异
+7. *git diff [commit1] commit2 -- files* 比较两个提交commit1和commit2之间的差异，如果省略一个，则比较的是当前提交与另一提交间的差异；如果指定files，则之比较这些文件的差异
