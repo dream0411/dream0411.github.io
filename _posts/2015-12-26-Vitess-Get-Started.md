@@ -7,7 +7,8 @@ title: Get started to Vitess
 ===
 
 # 启动前由于我本机环境中后面的vttablet步骤中的mysql初始化过程较慢，会导致后续步骤全部错误，我这里修改了vttablet-up.sh脚本并另存为vttablet-up2.sh，修改内容为68行，添加了较大的`wait_time`参数值：
-    68  action="-logtostderr init -init_db_sql_file $init_db_sql_file -wait_time 5m"
+    68#  action="-logtostderr init -init_db_sql_file $init_db_sql_file -wait_time 5m"
+
 # 启动docker容器，并暴露web管理端口15000和命令行管理端口15999，附加宿主机的bashrc配置，并修改了vttablet-up.sh脚本，增加初次mysql时的等待时间：
     sudo docker run -ti --name vitess -p 15000:15000 -p 15999:15999 -v `pwd`/examples/local/vttablet-up2.sh:/vt/src/github.com/youtube/vitess/examples/local/vttablet-up2.sh  vitess/base bash
 
