@@ -128,6 +128,17 @@ git stash pop
 
 	git show c78e2e:README > README-old
 
+4. 撤销已经推送到远程仓库的提交
+如果刚刚将几个提交推送到远程仓库，但是发现错误后悔了，可以回退到之前的某个提交位置
+
+```
+// 想回退到提交位置d723a
+git checkout d723a
+
+// 强制推送当前位置到远程，但是一定注意，如果有人在此之间提交过代码，也会把对方的代码撤销掉
+git push --force
+```
+
 ### 在历史版本或记录搜索关键字或代码
 
 	git grep "SomeCode" $(git rev-list --all)
