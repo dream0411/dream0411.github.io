@@ -96,6 +96,7 @@ INSERT / UPDATE / DELETE：加 X 锁
 
 * 读取: `select @@session.tx_isolation, @@global.tx_isolation;`
 * 写入，`SET TRANSACTION`命令只对当前会话的下一个事务有效，当下个事务结束之后，下下个事务又会恢复到当前会话的隔离级别:
+
 ```
 -- 下个事务
 set transaction isolation level read uncommitted;
@@ -212,6 +213,7 @@ set global transaction isolation level read committed;
 * 是记录锁和间隙锁的组合，它指的是加在某条记录以及这条记录前面间隙上的锁
 * 假设一个索引包含
 10、11、13 和 20 这几个值，可能的 Next-key 锁如下：
+
 ```
 (-∞, 10]
 (10, 11]
@@ -219,6 +221,7 @@ set global transaction isolation level read committed;
 (13, 20]
 (20, +∞)
 ```
+
 * 前面四个都是 Next-key 锁，最后一个为间隙锁。和间隙锁一样，在 RC 隔离级别下没有 Next-key 锁，只有 RR 隔离级别才有
 
 4. 插入意向锁（Insert Intention Locks）
