@@ -137,7 +137,7 @@ set global transaction isolation level read committed;
 其他会话无论申请该表的读锁或写锁，都会阻塞，直到锁释放。
 锁的释放规则如下：
 
-4. 使用 UNLOCK TABLES 语句可以显示释放表锁；
+使用 UNLOCK TABLES 语句可以显示释放表锁；
 
 * 如果会话在持有表锁的情况下执行 LOCK TABLES 语句，将会释放该会话之前持有的锁；
 * 如果会话在持有表锁的情况下执行 START TRANSACTION 或 BEGIN 开启一个事务，将会释放该会话之前持有的锁；
@@ -200,15 +200,15 @@ set global transaction isolation level read committed;
 
 ## (三)细说Mysql锁类型
 
-1. 记录锁 Record Locks
+### 1、记录锁 Record Locks
 
-2. 间隙锁 Gap Locks
+### 2、间隙锁 Gap Locks
 
 * 又称为范围锁（Range Locks）
 * 间隙锁可以防止其他事务在这个范围内插入或修改记录，保证两次读取这个范围内的记录不会变，从而不会出现幻读现象
 * 间隙锁和间隙锁之间是互不冲突的，间隙锁唯一的作用就是为了防止其他事务的插入
 
-3. Next-Key Locks
+### 3、Next-Key Locks
 
 * 是记录锁和间隙锁的组合，它指的是加在某条记录以及这条记录前面间隙上的锁
 * 假设一个索引包含
@@ -224,14 +224,14 @@ set global transaction isolation level read committed;
 
 * 前面四个都是 Next-key 锁，最后一个为间隙锁。和间隙锁一样，在 RC 隔离级别下没有 Next-key 锁，只有 RR 隔离级别才有
 
-4. 插入意向锁（Insert Intention Locks）
+### 4、插入意向锁（Insert Intention Locks）
 
 * 插入意向锁，是一种特殊的间隙锁（所以有的地方把它简写成 II GAP），这个锁表示插入的意向，只有在 INSERT 的时候才会有这个锁
 * 和上面介绍的表级意向锁是两个完全不同的概念
 * 插入意向锁和插入意向锁之间互不冲突，所以可以在同一个间隙中有多个事务同时插入不同索引的记录
 * 插入意向锁只会和间隙锁或 Next-key 锁冲突
 
-5. 行锁的兼容矩阵
+### 5、行锁的兼容矩阵
 
 * 矩阵图，行是要加的锁，列是已有的锁： http://www.aneasystone.com/usr/uploads/2017/11/3404508090.png
 
@@ -243,7 +243,7 @@ set global transaction isolation level read committed;
 
 * 记录锁和记录锁冲突，Next-key 锁和 Next-key 锁冲突，记录锁和 Next-key 锁冲突
 
-6. 在MySQL中观察行锁
+### 6、在MySQL中观察行锁
 
 * 打印出 InnoDb 的所有锁信息，包括锁 ID、事务 ID、以及每个锁的类型和模式等其他信息
 `select * from information_schema.INNODB_LOCKS;`
@@ -277,11 +277,11 @@ set global transaction isolation level read committed;
 
 ## (一)开启锁监控
 
-1. 通过`show engine innodb status`命令来获取死锁信息，但是它有个限制，只能拿到最近一次的死锁日志，默认情况下监控是关闭的；
+* 通过`show engine innodb status`命令来获取死锁信息，但是它有个限制，只能拿到最近一次的死锁日志，默认情况下监控是关闭的；
 
-2. InnoDb 的监控主要分为四种：标准监控（Standard InnoDB Monitor）、锁监控（InnoDB Lock Monitor）、表空间监控（InnoDB Tablespace Monitor）和表监控（InnoDB Table Monitor）。后两种监控已经基本上废弃；官方监控文档：https://dev.mysql.com/doc/refman/5.6/en/innodb-enabling-monitors.html
+* InnoDb 的监控主要分为四种：标准监控（Standard InnoDB Monitor）、锁监控（InnoDB Lock Monitor）、表空间监控（InnoDB Tablespace Monitor）和表监控（InnoDB Table Monitor）。后两种监控已经基本上废弃；官方监控文档：https://dev.mysql.com/doc/refman/5.6/en/innodb-enabling-monitors.html
 
-3. 通过基于系统表开启监控(表的结构和表里的内容无所谓)
+* 通过基于系统表开启监控(表的结构和表里的内容无所谓)
 
 ```
 -- 开启标准监控
@@ -297,7 +297,7 @@ CREATE TABLE innodb_lock_monitor (a INT) ENGINE=INNODB;
 DROP TABLE innodb_lock_monitor;
 ```
 
-4. 通过参数开启锁监控（Mysql 5.6.16后）
+* 通过参数开启锁监控（Mysql 5.6.16后）
 
 ```
 -- 开启标准监控
@@ -313,10 +313,10 @@ set GLOBAL innodb_status_output_locks=ON;
 set GLOBAL innodb_status_output_locks=OFF;
 ```
 
-5. MySQL提供了一个系统参数 `innodb_print_all_deadlocks` 专门用于记录死锁日志，当发生死锁时，死锁日志会记录到 MySQL 的错误日志文件中
+* MySQL提供了一个系统参数 `innodb_print_all_deadlocks` 专门用于记录死锁日志，当发生死锁时，死锁日志会记录到 MySQL 的错误日志文件中
 `set GLOBAL innodb_print_all_deadlocks=ON;`
 
-6. 一些有趣的监控工具也很有用，比如 Innotop 和 Percona Toolkit 里的小工具 pt-deadlock-logger
+* 一些有趣的监控工具也很有用，比如 Innotop 和 Percona Toolkit 里的小工具 pt-deadlock-logger
 
 ## (二)读懂死锁日志
 
