@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 不确定性简述
+title: mysql 事务、锁、索引、死锁
 ---
 
 {{ page.title }}
