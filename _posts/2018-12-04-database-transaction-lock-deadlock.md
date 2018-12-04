@@ -6,9 +6,6 @@ title: mysql 事务、锁、索引、死锁
 {{ page.title }}
 ===
 
-mysql 事务、锁、索引、死锁
-===
-
 # 一、事务
 
 ## (一) 事务四要素：ACID
