@@ -117,8 +117,6 @@ set global transaction isolation level read committed;
 
 ## (一)表锁和行锁
 
-* 锁是加在索引上的
-
 ### 表锁
 
 1. 表锁是直接对表加读锁或写锁
@@ -151,6 +149,11 @@ set global transaction isolation level read committed;
 * `LOCK_INSERT_INTENSION`: 插入意向GAP锁，插入记录时使用，是LOCK_GAP的特例
 
 ## (二)读锁和写锁
+
+
+* 行锁是加在索引上的
+* 加行锁的过程都是逐行加锁
+* InnoDb 的主键索引有时候又被称为`聚簇索引（Clustered Index）`，二级索引被称为`非聚簇索引（Nonclustered Index）`。如果没有主键，InnoDB 会试着使用一个非空的唯一索引（Unique nonnullable index）代替；如果没有这种索引，会定义一个隐藏的主键。所以 InnoDb 的表一定会有主键索引。关于聚簇索引和二级索引，可以参看这里的 MySQL 文档。
 
 ### 锁模式
 
