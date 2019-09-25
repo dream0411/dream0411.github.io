@@ -191,3 +191,31 @@ git diff test
 // 比较两个提交commit1和commit2之间的差异，如果省略一个，则比较的是当前提交与另一提交间的差异；如果指定files，则之比较这些文件的差异
 git diff [commit1] commit2 -- files
 ```
+
+### 撤销某次历史
+
+1. 历史上某次提交有问题，如果改次提交是一个普通的提交，使用
+
+```
+git revert commit_id
+git push
+```
+
+2. 如果该次提交是一个merge提交，则需要进一步区分撤销内容
+
+```
+// 假如待撤销的merge commit是c000，父提交按顺序显示为c001和c002，那么要分别撤销并解决冲突，先解决从左数的第一个，从-m 1开始算起
+git revert c000 -m 1
+
+// 解决冲突、合并、提交
+git add ...
+git commit ...
+
+// 撤销第2个父提交c002
+git revert c000 -m 2
+git add ...
+git commit ...
+
+// 撤销完毕，最终提交到远程
+git push
+```
